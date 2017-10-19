@@ -1,10 +1,8 @@
-const A = artifacts.require('A1');
-const B = artifacts.require('B1');
 const C = artifacts.require('C1');
 
-const A2 = artifacts.require('A2');
-const B2 = artifacts.require('B2');
 const C2 = artifacts.require('C2');
+
+const Bottom = artifacts.require('Bottom');
 
 contract('Shadowing Scenarios', (accs) => {
 
@@ -35,6 +33,13 @@ contract('Shadowing Scenarios', (accs) => {
        * This may be catastrophic if say a contract that inherited Owner
        * overrode one of the properties.
        */
+    });
+  });
+
+  describe("Scenario 3", () => {
+    it("what should Bottom return?", async () => {
+      const bottom = await Bottom.new();
+      console.log((await bottom.getNumber()).toString());
     });
   });
 });
